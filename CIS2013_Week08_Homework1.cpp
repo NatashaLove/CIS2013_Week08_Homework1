@@ -17,7 +17,7 @@ int main () {
 		exit(1);
 	}
 	int n = 100;
-	char* buffer1[10][10];
+	char buffer1[10][10];
 	
 	game.read(buffer1, n);
 	
@@ -46,17 +46,18 @@ for(int x=0; x<10; x++) {
 
 // Create empty array for recording the player's moves
 
-char* buffer2 [10][10];
-char x[10][10];
-x[0][0]=' ';
+char buffer2 [10][10];
+
+buffer2[0][0]=' ';
 for(int i=0;i<10;i++) {
 	
 	for(int j=0; j<10; j++) {
-		x[i][j]=' ';
+		buffer2[i][j]=' ';
 	}
 		
 }
 // Ask the player to enter coordinates
+int x, y;
 cout << "Enter coordinates of the ship" << endl;
 cin >> x >> y;
 
