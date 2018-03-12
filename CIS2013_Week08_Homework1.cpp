@@ -4,8 +4,7 @@
 using namespace std;
 
 int main () {
-	//int number;
-	//int one, two, three, four, five;
+	
 	char cont = 'y';
 	
 	// Inputs/ prints ready numbers from the file
