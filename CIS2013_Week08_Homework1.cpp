@@ -19,6 +19,7 @@ int main () {
 	
 	// Inputs/ prints ready numbers from the file
 	ifstream game;
+	ofstream moves;
 	//int l;
 	
 	char field [10][10];
@@ -93,6 +94,8 @@ int main () {
 
 	
 	while(1) {
+		moves.open("board.dat");
+		moves << buffer2 [10][10] << endl;
 		
 		//coord(x,y);
 		cout << endl;
