@@ -88,7 +88,7 @@ int main () {
 		}
 		else
 		{
-			cout << "Already hit there! Try another coordinates.";
+			cout << "Already hit there! Try other coordinates.";
 		}
 	}
 	
@@ -243,6 +243,6 @@ void coord(int& x, int& y) {
 		// }
 		// else
 		// {
-			// cout << "Already hit there! Try another coordinates.";
+			// cout << "Already hit there! Try other coordinates.";
 		// }
 // }
