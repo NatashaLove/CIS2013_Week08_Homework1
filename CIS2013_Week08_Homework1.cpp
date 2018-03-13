@@ -6,13 +6,14 @@ using namespace std;
 void new_game (int g);
 void print (char field [10][10]);
 void u_board(char field [10][10], char buffer2 [10][10] );
-void s_count(int count);
+//void s_count();
+void coord(int& x, int& y);
 
 
 int main () {
 	
-	char cont = 'y';
-	
+	int x, y;
+	//char cont = 'y';
 	
 	// Inputs/ prints ready numbers from the file
 	ifstream game;
@@ -24,11 +25,36 @@ int main () {
 	char* cell = (char*)field;
 	
 	char buffer1[10][10];
+	char buffer2 [10][10];
+	//int count;
 	
 	game >> buffer1 [10][10];
 	print(field);
 	u_board(field, buffer2);
-	s_count(count);
+	
+	//s_count();
+	
+	//char cell;
+	//char* cell = (char*)field;
+	
+	int count = 0;
+	for (int i = 0; i < 100;i++)
+	{
+		if (cell[i] == 'x')
+			count++;
+	}
+
+	
+	//while(1) {
+		
+		coord(x,y);
+		if (x > 9 || x < 0 || y < 0 || y>9)
+		{
+			cout << "Wrong value. ";
+			coord(x,y);
+		
+	}
+	
 	
 	
 	//cout << buffer1;
@@ -125,11 +151,26 @@ for(int i=0;i<10;i++) {
 }
 }
 
-void s_count(int count) {
-	int count = 0;
-	for (int i = 0; i < 100;i++)
-	{
-		if (tmp[i] == 'x')
-			count++;
-	}
+// void s_count() {
+	// char field;
+	// char cell;
+	// char* cell = (char*)field;
+	
+	// int count = 0;
+	// for (int i = 0; i < 100;i++)
+	// {
+		// if (cell[i] == 'x')
+			// count++;
+	// }
+// }
+
+void coord(int& x, int& y) {
+	
+	cout << endl;
+	cout << "Please enter the coordinates between 0 and 9 " << endl;
+	cout << endl;
+	cout << "x = ";
+	cin >> x;
+	cout << "y =";
+	cin >> y;
 }
