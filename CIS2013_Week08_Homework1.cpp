@@ -6,6 +6,7 @@ using namespace std;
 void new_game (int g);
 void print (char field [10][10]);
 void u_board(char field [10][10], char buffer2 [10][10] );
+void s_count(int count);
 
 
 int main () {
@@ -27,6 +28,7 @@ int main () {
 	game >> buffer1 [10][10];
 	print(field);
 	u_board(field, buffer2);
+	s_count(count);
 	
 	
 	//cout << buffer1;
@@ -121,4 +123,13 @@ for(int i=0;i<10;i++) {
 	}
 		
 }
+}
+
+void s_count(int count) {
+	int count = 0;
+	for (int i = 0; i < 100;i++)
+	{
+		if (tmp[i] == 'x')
+			count++;
+	}
 }
