@@ -3,37 +3,76 @@
 
 using namespace std;
 
-void new_game (int g);
+//void new_game (int g);
 void print (char field [10][10]);
-void u_board(char field [10][10], char buffer2 [10][10] );
+//void u_board();
 //void s_count();
-void coord(int& x, int& y);
+//void coord(int& x, int& y);
 //void processing (char buffer2[][10], char field[][10]);
 
 
 int main () {
 	
-	int a, b;
+	int x, y;
+	char g;
 	//char cont = 'y';
 	
 	// Inputs/ prints ready numbers from the file
 	ifstream game;
-	int l;
-	
-	new_game(l);
+	//int l;
 	
 	char field [10][10];
-	
 	char buffer1[10][10];
 	char buffer2 [10][10];
+	
+	// amount of 'x' 
+	int count = 20;
+	
+	//new_game(l);
+	
+	cout << endl;
+	cout << "Hello! Choose your game: ENTER: 1, 2 or 3 " << endl;
+	cin >> g;
+	
+	switch (g)
+	{
+		case 1: game.open ("game1.dat");
+		break;
+		
+		case 2: game.open ("game2.dat");
+		break;
+		
+		case 3: game.open ("game3.dat");
+		break;
+	}
+	
+	//game.open ("game1.dat");
+	
+	if(game.fail()) {
+		cout << "Something went wrong with " << g << endl;
+		exit(1);
+} else {
+	cout << "Let's START!";
+	cout << endl;
+}
 	
 	//int count;
 	
 	game >> buffer1 [10][10];
-	char f;
-	char b2;
-	print(f);
-	u_board(f, b2);
+	// char f;
+	// char b2;
+	
+	print(field);
+	
+	//u_board();
+	
+	for(int i=0;i<10;i++) {
+	
+	for(int j=0; j<10; j++) {
+		buffer2[i][j]=' ';
+		}
+		
+	}
 	
 	//s_count();
 	
@@ -41,50 +80,68 @@ int main () {
 	//char* cell = (char*)field;
 	
 	// Ship/hit count.
-	char* cell = (char*)field[];
-	int count = 0;
-	for (int i = 0; i < 100;i++)
-	{
-		if (cell[i] == 'x')
-			count++;
-	}
+	//char* cell = (char*)field[];
+	
+	//buffer2[a][b]=field[a][b];
+	
+		
+	// for (int i = 0; i < 100;i++)
+	// {
+		// if (buffer2[i] == 'x')
+			// count++;
+	// }
 
 	
 	while(1) {
 		
-		coord(a,b);
-		if (a > 9 || a < 0 || b < 0 || b > 9)
+		//coord(x,y);
+		cout << endl;
+		cout << "Please enter the coordinates between 0 and 9 " << endl;
+		cout << endl;
+		cout << "x = ";
+		cin >> x;
+		cout << "y =";
+		cin >> y;
+		
+		if (x > 9 || x < 0 || y < 0 || y > 9)
 		{
 			cout << "Wrong value. ";
-			coord(a,b);
-		
+			//coord(x,y);
+		cout << endl;
+		cout << "Please enter the coordinates between 0 and 9 " << endl;
+		cout << endl;
+		cout << "x = ";
+		cin >> x;
+		cout << "y =";
+		cin >> y;
 	}
 		
 	 //   processing (buffer2, field); 
 	
-	if (buffer2[a][b] == ' ')
+	if (buffer2[x][y] == ' ')
 		{
-			if (field[a][b] == 'x')
+			if (field[x][y] == 'x')
 			{
 				cout << "HIT! " << endl;
-				buffer2[a][b] = 'X';
+				buffer2[x][y] = 'X';
 				count--;
-				if (!count)
+				if (count==0)
 				{
-					print(b2);
+					print(buffer2);
 					cout << endl;
 					cout << "The enemy is defeated. You won.";
-					exit (1);
+					//exit (1);
+					break;
 				}
 			}
 			else
 			{
 				cout << "MISS! ";
-				buffer2[a][b] = '0';
+				buffer2[x][y] = '0';
 			}
 			cout << endl;
-			print(b2);
-			cout << "----------------------------------------";
+			print(buffer2);
+			cout << "--------------------------------------------";
 		}
 		else
 		{
@@ -122,35 +179,35 @@ int main () {
 return 0; 
 }
 
-void new_game (int g) {
-	ifstream game;
-	//int g;
-	cout << endl;
-	cout << "Hello! Choose your game: ENTER: 1, 2 or 3 " << endl;
-	cin >> g;
+// void new_game (int g) {
+	// ifstream game;
+	// //int g;
+	// cout << endl;
+	// cout << "Hello! Choose your game: ENTER: 1, 2 or 3 " << endl;
+	// cin >> g;
 	
-	switch (g)
-	{
-		case 1: game.open ("game1.dat");
-		break;
+	// switch (g)
+	// {
+		// case 1: game.open ("game1.dat");
+		// break;
 		
-		case 2: game.open ("game2.dat");
-		break;
+		// case 2: game.open ("game2.dat");
+		// break;
 		
-		case 3: game.open ("game3.dat");
-		break;
-	}
+		// case 3: game.open ("game3.dat");
+		// break;
+	// }
 	
-	//game.open ("game1.dat");
-	if(game.fail()) {
-		cout << "Something went wrong with " << g << endl;
-		exit(1);
-} else {
-	cout << "Let's START!";
-	cout << endl;
-}
+	// //game.open ("game1.dat");
+	// if(game.fail()) {
+		// cout << "Something went wrong with " << g << endl;
+		// exit(1);
+// } else {
+	// cout << "Let's START!";
+	// cout << endl;
+// }
 	
-}
+// }
 void print (char field [10][10]) {
 	//char field[10][10];
 
@@ -164,7 +221,7 @@ cout << endl << "		  0 1 2 3 4 5 6 7 8 9" << endl;
 for(int x=0; x<10; x++) {
 	cout << "		" <<x << " ";
 	for(int y=0; y<10; y++) {
-		cout << field [x] [y] << " ";
+		cout << field [x][y] << " ";
 		
 	}
 	cout << endl;
@@ -172,19 +229,20 @@ for(int x=0; x<10; x++) {
 }
 
 // Create empty array for recording the player's moves
-void u_board(char field [10][10], char buffer2 [10][10] ){
+// void u_board(){
+// char field [10][10]; 
+// char buffer2 [10][10] ;
+// //char buffer2 [10][10];
 
-//char buffer2 [10][10];
-
-// buffer2[0][0]=' ';
-for(int i=0;i<10;i++) {
+// // buffer2[0][0]=' ';
+// for(int i=0;i<10;i++) {
 	
-	for(int j=0; j<10; j++) {
-		buffer2[i][j]=' ';
-	}
+	// for(int j=0; j<10; j++) {
+		// buffer2[i][j]=' ';
+	// }
 		
-}
-}
+// }
+// }
 
 // void s_count() {
 	// char field;
@@ -199,16 +257,16 @@ for(int i=0;i<10;i++) {
 	// }
 // }
 
-void coord(int& x, int& y) {
+// void coord(int& x, int& y) {
 	
-	cout << endl;
-	cout << "Please enter the coordinates between 0 and 9 " << endl;
-	cout << endl;
-	cout << "x = ";
-	cin >> x;
-	cout << "y =";
-	cin >> y;
-}
+	// cout << endl;
+	// cout << "Please enter the coordinates between 0 and 9 " << endl;
+	// cout << endl;
+	// cout << "x = ";
+	// cin >> x;
+	// cout << "y =";
+	// cin >> y;
+// }
 
 // void processing (char buffer2[][10], char field[][10], int &x, int &y)  {
 	// //char buffer2;
