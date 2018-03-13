@@ -5,6 +5,7 @@ using namespace std;
 
 void new_game (int g);
 void print (char field [10][10]);
+void u_board(char field [10][10], char buffer2 [10][10] );
 
 
 int main () {
@@ -25,6 +26,8 @@ int main () {
 	
 	game >> buffer1 [10][10];
 	print(field);
+	u_board(field, buffer2);
+	
 	
 	//cout << buffer1;
 	
@@ -102,5 +105,20 @@ for(int x=0; x<10; x++) {
 		
 	}
 	cout << endl;
+}
+}
+
+// Create empty array for recording the player's moves
+void u_board(char field [10][10], char buffer2 [10][10] ){
+
+//char buffer2 [10][10];
+
+// buffer2[0][0]=' ';
+for(int i=0;i<10;i++) {
+	
+	for(int j=0; j<10; j++) {
+		buffer2[i][j]=' ';
+	}
+		
 }
 }
