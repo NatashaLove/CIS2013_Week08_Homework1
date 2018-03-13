@@ -8,11 +8,12 @@ void print (char field [10][10]);
 void u_board(char field [10][10], char buffer2 [10][10] );
 //void s_count();
 void coord(int& x, int& y);
+//void processing (char buffer2[][10], char field[][10]);
 
 
 int main () {
 	
-	int x, y;
+	int a, b;
 	//char cont = 'y';
 	
 	// Inputs/ prints ready numbers from the file
@@ -22,21 +23,25 @@ int main () {
 	new_game(l);
 	
 	char field [10][10];
-	char* cell = (char*)field;
 	
 	char buffer1[10][10];
 	char buffer2 [10][10];
+	
 	//int count;
 	
 	game >> buffer1 [10][10];
-	print(field);
-	u_board(field, buffer2);
+	char f;
+	char b2;
+	print(f);
+	u_board(f, b2);
 	
 	//s_count();
 	
 	//char cell;
 	//char* cell = (char*)field;
 	
+	// Ship/hit count.
+	char* cell = (char*)field[];
 	int count = 0;
 	for (int i = 0; i < 100;i++)
 	{
@@ -45,17 +50,47 @@ int main () {
 	}
 
 	
-	//while(1) {
+	while(1) {
 		
-		coord(x,y);
-		if (x > 9 || x < 0 || y < 0 || y>9)
+		coord(a,b);
+		if (a > 9 || a < 0 || b < 0 || b > 9)
 		{
 			cout << "Wrong value. ";
-			coord(x,y);
+			coord(a,b);
 		
 	}
+		
+	 //   processing (buffer2, field); 
 	
-	
+	if (buffer2[a][b] == ' ')
+		{
+			if (field[a][b] == 'x')
+			{
+				cout << "HIT! " << endl;
+				buffer2[a][b] = 'X';
+				count--;
+				if (!count)
+				{
+					print(b2);
+					cout << endl;
+					cout << "The enemy is defeated. You won.";
+					exit (1);
+				}
+			}
+			else
+			{
+				cout << "MISS! ";
+				buffer2[a][b] = '0';
+			}
+			cout << endl;
+			print(b2);
+			cout << "----------------------------------------";
+		}
+		else
+		{
+			cout << "Already hit there! Try another coordinates.";
+		}
+	}
 	
 	//cout << buffer1;
 	
@@ -174,3 +209,40 @@ void coord(int& x, int& y) {
 	cout << "y =";
 	cin >> y;
 }
+
+// void processing (char buffer2[][10], char field[][10], int &x, int &y)  {
+	// //char buffer2;
+	// //char field;
+	// int count;
+	// //int &x; 
+	// //int &y;
+	
+	// if (buffer2[x][y] == ' ')
+		// {
+			// if (field[x][y] == 'x')
+			// {
+				// cout << "HIT! " << endl;
+				// buffer2[x][y] = 'X';
+				// count--;
+				// if (!count)
+				// {
+					// print(buffer2);
+					// cout << endl;
+					// cout << "The enemy is defeated. You won.";
+					// exit (1);
+				// }
+			// }
+			// else
+			// {
+				// cout << "MISS! ";
+				// buffer2[x][y] = '0';
+			// }
+			// cout << endl;
+			// print(buffer2);
+			// cout << "----------------------------------------";
+		// }
+		// else
+		// {
+			// cout << "Already hit there! Try another coordinates.";
+		// }
+// }
